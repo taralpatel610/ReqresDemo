@@ -81,6 +81,7 @@ public class UserAdapter extends ArrayAdapter<User> {
             }
             return mIcon;
         }
+
         protected void onPostExecute(Bitmap result) {
             bmImage.setImageBitmap(result);
         }
