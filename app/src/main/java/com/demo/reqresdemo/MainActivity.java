@@ -1,12 +1,14 @@
 package com.demo.reqresdemo;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ListView;
 
 import org.json.JSONArray;
@@ -45,6 +47,10 @@ public class MainActivity extends AppCompatActivity {
         adapter = new UserAdapter(getApplicationContext(), R.layout.list_item, userList);
         listview.setAdapter(adapter);
 
+    }
+
+    public void createNewUser(View v){
+        startActivity(new Intent(MainActivity.this, NewUserActivity.class));
     }
 
     class JSONAsyncTask extends AsyncTask<String, String, String> {
