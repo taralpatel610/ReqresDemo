@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void createNewUser(View v){
+    public void createUser(View v){
         startActivity(new Intent(MainActivity.this, NewUserActivity.class));
     }
 
