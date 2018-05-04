@@ -7,6 +7,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -36,10 +37,22 @@ public class NewUserActivity extends AppCompatActivity {
     }
 
     public void onSubmit(View v) {
-
+        boolean validation = true;
         name = ename.getText().toString();
         job = ejob.getText().toString();
-        new JSONAsyncTask().execute();
+        if (TextUtils.isEmpty(name)) {
+            ename.setError("This field cannot be empty");
+            validation = false;
+            return;
+        }
+        if (TextUtils.isEmpty(job)) {
+            ejob.setError("This field cannot be empty");
+            validation = false;
+            return;
+        }
+        if (validation == true) {
+            new JSONAsyncTask().execute();
+        }
     }
 
     class JSONAsyncTask extends AsyncTask<String, String, String> {
@@ -75,7 +88,6 @@ public class NewUserActivity extends AppCompatActivity {
             }
         }
     }
-
 
 
 }
