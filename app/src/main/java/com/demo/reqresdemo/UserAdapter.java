@@ -37,6 +37,7 @@ public class UserAdapter extends ArrayAdapter<User> {
         // convert view = design
         View v = convertView;
         if (v == null) {
+            // obtaining view reference
             holder = new ViewHolder();
             v = vi.inflate(Resource, null);
             holder.imageview = v.findViewById(R.id.avatar);
@@ -46,10 +47,11 @@ public class UserAdapter extends ArrayAdapter<User> {
         } else {
             holder = (ViewHolder) v.getTag();
         }
-
+        //appending data to relevant view
         holder.firstName.setText(userList.get(position).getFirstName());
         holder.lastName.setText(userList.get(position).getLastName());
         holder.imageview.setImageResource(R.mipmap.ic_launcher);
+        // loading the avatar image on a image view of each list item
         new DownloadImageTask(holder.imageview).execute(userList.get(position).getAvatar());
 
         return v;
